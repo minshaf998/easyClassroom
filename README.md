@@ -1,2 +1,0 @@
-# easyClassroomPractice
-Group Project Practice 
