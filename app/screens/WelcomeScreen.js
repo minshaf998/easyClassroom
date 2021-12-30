@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, StyleSheet, View, SafeAreaView, Image } from "react-native";
 
+import AppButton from "../components/AppButton";
+
 function WelcomeScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
@@ -11,8 +13,13 @@ function WelcomeScreen(props) {
         ></Image>
         <Text style={styles.text}>TIME TO LEARN</Text>
       </View>
-      <View style={styles.loginButton}></View>
-      <View style={styles.registerButton}></View>
+
+      <View style={styles.buttonContainer}>
+        <AppButton color={"primary"} title={"Login"}></AppButton>
+        <AppButton color={"secondary"} title={"Register"}></AppButton>
+      </View>
+      {/* <View style={styles.loginButton}></View> */}
+      {/* <View style={styles.registerButton}></View> */}
     </SafeAreaView>
   );
 }
@@ -25,19 +32,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  loginButton: {
-    width: "100%",
-    backgroundColor: "blue",
-    height: 70,
-  },
+  // loginButton: {
+  //   width: "100%",
+  //   backgroundColor: "blue",
+  //   height: 70,
+  // },
 
-  registerButton: {
-    width: "100%",
-    backgroundColor: "blue",
-    height: 70,
-    marginBottom: 180,
-    marginTop: 10,
-  },
+  // registerButton: {
+  //   width: "100%",
+  //   backgroundColor: "blue",
+  //   height: 70,
+  //   marginBottom: 180,
+  //   marginTop: 10,
+  // },
 
   logo: {
     width: 150,
@@ -46,13 +53,20 @@ const styles = StyleSheet.create({
 
   logoContainer: {
     position: "absolute",
-    top: 150,
+    top: 100,
     alignItems: "center",
   },
 
   text: {
     fontWeight: "bold",
-    // position: "absolute",
+    position: "absolute",
+    top: 130,
+    fontSize: 20,
+  },
+
+  buttonContainer: {
+    width: "90%",
+    marginBottom: 20,
   },
 });
 
