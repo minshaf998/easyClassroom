@@ -1,9 +1,15 @@
 import React from "react";
-import { Text, StyleSheet, View, SafeAreaView, Image } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  Image,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 
-import AppButton from "../components/AppButton";
-
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
@@ -15,11 +21,21 @@ function WelcomeScreen(props) {
       </View>
 
       <View style={styles.buttonContainer}>
-        <AppButton color={"primary"} title={"Login"}></AppButton>
-        <AppButton color={"secondary"} title={"Register"}></AppButton>
+        <TouchableOpacity
+          style={styles.button}
+          title="Login"
+          onPress={() => navigation.navigate("Login")}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: "red", marginTop: 5 }]}
+          title="Register"
+          onPress={() => navigation.navigate("Register")}
+        >
+          <Text style={styles.buttonText}>Register</Text>
+        </TouchableOpacity>
       </View>
-      {/* <View style={styles.loginButton}></View> */}
-      {/* <View style={styles.registerButton}></View> */}
     </SafeAreaView>
   );
 }
@@ -32,19 +48,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  // loginButton: {
-  //   width: "100%",
-  //   backgroundColor: "blue",
-  //   height: 70,
-  // },
+  newButton: {
+    width: "100%",
+  },
 
-  // registerButton: {
-  //   width: "100%",
-  //   backgroundColor: "blue",
-  //   height: 70,
-  //   marginBottom: 180,
-  //   marginTop: 10,
-  // },
+  button: {
+    backgroundColor: "blue",
+    height: 50,
+    borderRadius: 9,
+    paddingTop: 5,
+  },
 
   logo: {
     width: 150,
@@ -57,6 +70,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  buttonText: {
+    color: "white",
+    fontSize: 25,
+    alignSelf: "center",
+  },
+
   text: {
     fontWeight: "bold",
     position: "absolute",
@@ -66,7 +85,7 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     width: "90%",
-    marginBottom: 20,
+    marginBottom: 30,
   },
 });
 
