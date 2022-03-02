@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from "react-native";
 const RegisterScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>RegisterScreen</Text>
+      <Text style={styles.textStyle}>RegisterScrdeen</Text>
     </View>
   );
 };
@@ -17,7 +17,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2c3e50",
+    backgroundColor: "white",
+  },
+
+  textStyle: {
+    fontSize: 23,
+    color: "red",
   },
 });
 
