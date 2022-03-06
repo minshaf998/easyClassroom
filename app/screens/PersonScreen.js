@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 // create a component
 const PersonScreen = () => {
@@ -12,21 +12,36 @@ const PersonScreen = () => {
         </Text>
       </View>
 
-      <View style={styles.box}>
-        <Text style={styles.text}>I'M STUDENT</Text>
-      </View>
+      < View>
+        <TouchableOpacity  
+          style={styles.box} 
+          title={"Student"}
+          onPress={this.onpress}>
+            <Text style={styles.text}>I'M STUDENT</Text>
+        </TouchableOpacity>
 
-      <View style={styles.box}>
-        <Text style={styles.text}>I'M LECTURER</Text>
-      </View>
+        <TouchableOpacity  
+          style={styles.box}
+          title={"Lecturer"} 
+          onPress={this.onpress}>
+            <Text style={styles.text}>I'M LECTURER</Text>
+        </TouchableOpacity>
 
-      <View style={styles.box}>
-        <Text style={styles.text}>I'M DEMONSTRATE</Text>
-      </View>
+        <TouchableOpacity  
+          style={styles.box}
+          title={"Demostator"} 
+          onPress={this.onpress}>
+            <Text style={styles.text}>I'M DEMOSTRATOR</Text>
+        </TouchableOpacity>
 
-      <View style={styles.box}>
-        <Text style={styles.text}>I'M ADMIN</Text>
+        <TouchableOpacity  
+          style={styles.box}
+          title={"Admin"}
+          onPress={this.onpress}>
+            <Text style={styles.text}>I'M ADMIN</Text>
+        </TouchableOpacity>
       </View>
+      
     </View>
   );
 };
@@ -46,6 +61,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     height: 50,
     borderRadius: 10,
+    padding: 10,
   },
 
   text: {
