@@ -1,52 +1,51 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 
 // create a component
 const LoginScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
-
       <View style={styles.card}>
-        <Text style={styles.cardtext}> Email </Text>
+        <Text style={styles.cardtext}>Email</Text>
         <View style={styles.action}>
-          <TextInput
-            placeholder="Your email"
-            style={styles.textinput}
-            autoCapitalize="none"
-          />
+          <TextInput placeholder="rahn325@gmail.com" style={styles.textinput} />
         </View>
 
-        <Text style={[styles.cardtext,{marginTop:35}]}> Password </Text>
+        <Text style={[styles.cardtext, { marginTop: 35 }]}>Password </Text>
         <View style={styles.action}>
           <TextInput
+            style={styles.textinput}
             placeholder="Your password"
-            style={styles.textinput}
             secureTextEntry={true}
-            autoCapitalize="none"
           />
         </View>
 
-        <TouchableOpacity  
-          style={[styles.button, { backgroundColor: "lightgreen", marginTop: 5 }]}
-          title={"Done"} 
-          onPress={this.onpress}>
-            <Text style={styles.buttontext}>Done</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.buttonLogin}
+            title={"Login"}
+            // onPress={this.onpress}
+          >
+            <Text style={styles.buttontext}>Login</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity  
-          style={[styles.button, { backgroundColor: "white", marginTop: 5 }]}
-          title={"Signup"} 
-          onPress={this.onpress}>
+          <TouchableOpacity
+            style={styles.buttonSignup}
+            title={"Signup"}
+            // onPress={this.onpress}
+          >
             <Text style={styles.buttontext}>SignUp</Text>
-        </TouchableOpacity>
-
-
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
-
-    
   );
 };
 
@@ -54,47 +53,63 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     backgroundColor: "#2c3e50",
+    padding: 10,
+    paddingBottom: 40,
   },
 
-  card:{
+  card: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#C0C0C0",
     borderRadius: 30,
-    paddingVertical: 30,
+    // paddingVertical: 30,
+    paddingTop: 80,
+    paddingLeft: 35,
     paddingHorizontal: 20,
-    top: 25
-  
+    top: 25,
   },
 
-  cardtext:{
+  buttonContainer: {
+    marginTop: 50,
+    marginLeft: 20,
+  },
+  cardtext: {
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: "bold",
+    paddingLeft: 10,
   },
 
-  action:{
-    flexDirection: 'row',
+  action: {
+    flexDirection: "row",
     marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2',
-    paddingBottom: 5
-
+    borderBottomColor: "#f2f2f2",
+    paddingBottom: 5,
   },
 
-  textinput:{
+  textinput: {
     flex: 1,
     marginTop: 10,
     paddingLeft: 10,
-    color: '#05375a'
+    color: "#05375a",
   },
 
-  button:{
+  buttonSignup: {
     width: "85%",
     height: 50,
     borderRadius: 10,
-    padding: 10,
+    backgroundColor: "#808000",
+    marginTop: 20,
+  },
+
+  buttonLogin: {
+    width: "85%",
+    height: 50,
+    borderRadius: 10,
+    backgroundColor: "#808000",
+    // marginTop: 20,
   },
 
   buttontext: {
@@ -103,7 +118,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     paddingTop: 7,
   },
-
 });
 
 //make this component available to the app
