@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 // create a component
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -32,6 +32,7 @@ const LoginScreen = () => {
             style={styles.buttonLogin}
             title={"Login"}
             // onPress={this.onpress}
+            onPress={() => navigation.navigate("Login")}
           >
             <Text style={styles.buttontext}>Login</Text>
           </TouchableOpacity>
@@ -39,6 +40,7 @@ const LoginScreen = () => {
           <TouchableOpacity
             style={styles.buttonSignup}
             title={"Signup"}
+            onPress={() => navigation.navigate("SignUp")}
             // onPress={this.onpress}
           >
             <Text style={styles.buttontext}>SignUp</Text>

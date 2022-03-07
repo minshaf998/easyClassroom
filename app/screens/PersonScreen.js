@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 // create a component
-const PersonScreen = () => {
+const PersonScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleText}>
@@ -12,36 +12,43 @@ const PersonScreen = () => {
         </Text>
       </View>
 
-      < View>
-        <TouchableOpacity  
-          style={styles.box} 
+      <View>
+        <TouchableOpacity
+          style={styles.box}
           title={"Student"}
-          onPress={this.onpress}>
-            <Text style={styles.text}>I'M STUDENT</Text>
+          // onPress={this.onpress}>
+          onPress={() => navigation.navigate("StudentDashboard")}
+        >
+          <Text style={styles.text}>I'M STUDENT</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity  
+        <TouchableOpacity
           style={styles.box}
-          title={"Lecturer"} 
-          onPress={this.onpress}>
-            <Text style={styles.text}>I'M LECTURER</Text>
+          title={"Lecturer"}
+          // onPress={this.onpress}
+          onPress={() => navigation.navigate("LectrereDashboard")}
+        >
+          <Text style={styles.text}>I'M LECTURER</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity  
+        <TouchableOpacity
           style={styles.box}
-          title={"Demostator"} 
-          onPress={this.onpress}>
-            <Text style={styles.text}>I'M DEMOSTRATOR</Text>
+          title={"Demostator"}
+          // onPress={this.onpress}
+          onPress={() => navigation.navigate("DemoDashboard")}
+        >
+          <Text style={styles.text}>I'M DEMOSTRATOR</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity  
+        <TouchableOpacity
           style={styles.box}
           title={"Admin"}
-          onPress={this.onpress}>
-            <Text style={styles.text}>I'M ADMIN</Text>
+          // onPress={this.onpress}
+          onPress={() => navigation.navigate("AdminDashboard")}
+        >
+          <Text style={styles.text}>I'M ADMIN</Text>
         </TouchableOpacity>
       </View>
-      
     </View>
   );
 };
