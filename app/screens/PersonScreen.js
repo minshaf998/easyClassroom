@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
   },
 
   box: {
-    backgroundColor: "lightgreen",
-    width: "85%",
+    backgroundColor: "blue",
+    // width: "85%",
     marginTop: 20,
     height: 50,
     borderRadius: 10,
@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "500",
     alignSelf: "center",
-    paddingTop: 7,
+    color: "white",
+    // paddingTop: 7,
   },
 
   titleText: {

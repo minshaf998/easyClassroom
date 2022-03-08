@@ -31,7 +31,7 @@ function WelcomeScreen({ navigation }) {
         <TouchableOpacity
           style={[styles.button, { backgroundColor: "red", marginTop: 5 }]}
           title="Register"
-          onPress={() => navigation.navigate("SignUp")}
+          onPress={() => navigation.navigate("Person")}
         >
           <Text style={styles.buttonText}>SignUp</Text>
         </TouchableOpacity>
