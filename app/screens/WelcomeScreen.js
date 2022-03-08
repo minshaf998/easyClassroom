@@ -33,7 +33,7 @@ function WelcomeScreen({ navigation }) {
           title="Register"
           onPress={() => navigation.navigate("Person")}
         >
-          <Text style={styles.buttonText}>Register</Text>
+          <Text style={styles.buttonText}>SignUp</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
