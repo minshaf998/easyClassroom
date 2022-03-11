@@ -3,15 +3,13 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 // create a component
-class StudentDashboardScreen extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>StudentDashboardScreen</Text>
-      </View>
-    );
-  }
-}
+const StudentDashboard = () => {
+  return (
+    <View style={styles.container}>
+      <Text>StudentDashboard</Text>
+    </View>
+  );
+};
 
 // define your styles
 const styles = StyleSheet.create({
@@ -24,4 +22,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default StudentDashboardScreen;
+export default StudentDashboard;
