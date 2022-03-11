@@ -2,11 +2,21 @@ import React from "react";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import { StatusBar, View, StyleSheet } from "react-native";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthNavigator />
-    </NavigationContainer>
+    <View style={styles.container}>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight,
+  },
+});
