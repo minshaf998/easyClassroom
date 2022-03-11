@@ -30,8 +30,8 @@ function WelcomeScreen({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: "red", marginTop: 5 }]}
-          title="Register"
-          // onPress={() => navigation.navigate("")}
+          title="create class"
+          onPress={() => navigation.navigate("createClass")}
         >
           <Text style={styles.buttonText}>Create Class Room</Text>
         </TouchableOpacity>
