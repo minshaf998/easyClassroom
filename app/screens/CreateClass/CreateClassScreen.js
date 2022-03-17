@@ -8,8 +8,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { useLogin } from "./../../context/loginProvider";
+
 // create a component
 const CreateClassScreen = ({ navigation }) => {
+  const { setWhoIs, setIsLogedIn } = useLogin();
   return (
     <View style={styles.container}>
       <View style={styles.cardCont}>
@@ -33,7 +36,10 @@ const CreateClassScreen = ({ navigation }) => {
       <TouchableOpacity
         style={styles.buttonLogin}
         title={"Login"}
-        onPress={() => navigation.navigate("AdminDashboard")}
+        onPress={() => {
+          setWhoIs("admin");
+          setIsLogedIn(true);
+        }}
       >
         <Text style={styles.buttontext}>Create</Text>
       </TouchableOpacity>

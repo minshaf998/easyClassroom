@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
   const { whoIs } = useLogin();
-  console.log(whoIs);
+  // console.log(whoIs);
   if (whoIs === "student") {
     return (
       <Tab.Navigator>
