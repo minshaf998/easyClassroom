@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 const AuthNavigator = () => {
   const { isLogedIn } = useLogin();
   return !isLogedIn ? (
-    <Stack.Navigator screenOptions={{ headerShown: true }}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Person" component={PersonScreen} />

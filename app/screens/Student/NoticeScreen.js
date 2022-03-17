@@ -7,16 +7,16 @@ const NoticeScreen = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>Notices</Text>
+        <Text style={styles.test}>Notice 1</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>Courses</Text>
+        <Text style={styles.test}>Notice 1</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>GPA</Text>
+        <Text style={styles.test}>Notice 1</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>Chat Box</Text>
+        <Text style={styles.test}>Notice 1</Text>
       </TouchableOpacity>
     </View>
   );

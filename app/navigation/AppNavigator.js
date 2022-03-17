@@ -8,6 +8,8 @@ import StudentDashboardScreen from "../screens/Student/StudentDashboardScreen";
 import LectrerDashboardScreen from "../screens/Lecture/LecturerDashboardScreen";
 import DemoDashboardScreen from "../screens/Demo/DemoDashboardScreen";
 import AdminDashboard from "../screens/Admin/AdminDashboardScreen";
+import GpaCalScreen from "../screens/Student/GpaCalScreen";
+import ChatBoxScreen from "../screens/Student/ChatBoxScreen";
 
 import { useLogin } from "../context/loginProvider";
 
@@ -18,11 +20,15 @@ export default function AppNavigator() {
   // console.log(whoIs);
   if (whoIs === "student") {
     return (
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen
           name="StudentDashboard"
           component={StudentDashboardScreen}
         />
+        <Tab.Screen name="Notices" component={NoticeScreen} />
+        <Tab.Screen name="Profile" component={StudentProfileScreen} />
+        <Tab.Screen name="Gpa" component={GpaCalScreen} />
+        <Tab.Screen name="Chat" component={ChatBoxScreen} />
       </Tab.Navigator>
     );
   } else if (whoIs === "lecturer") {
