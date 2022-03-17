@@ -1,4 +1,3 @@
-//import liraries
 import React, { Component } from "react";
 import {
   View,
@@ -8,8 +7,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-// create a component
+import { useLogin } from "../../context/loginProvider";
+
 const LoginScreen = ({ navigation }) => {
+  const { setIsLogedIn } = useLogin();
   return (
     <View style={styles.container}>
       <View style={styles.cardCont}>
@@ -40,7 +41,7 @@ const LoginScreen = ({ navigation }) => {
       <TouchableOpacity
         style={styles.buttonLogin}
         title={"Login"}
-        onPress={() => navigation.navigate("Person")}
+        onPress={() => setIsLogedIn(true)}
       >
         <Text style={styles.buttontext}>Login</Text>
       </TouchableOpacity>

@@ -2,8 +2,12 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
+import { useLogin } from "../../context/loginProvider";
+
 // create a component
 const PersonScreen = ({ navigation }) => {
+  const { setWhoIs } = useLogin();
+
   return (
     <View style={styles.container}>
       <View style={styles.titleText}>
@@ -16,8 +20,10 @@ const PersonScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.box}
           title={"Student"}
-          // onPress={this.onpress}>
-          onPress={() => navigation.navigate("StudentDashboard")}
+          onPress={() => {
+            navigation.navigate("Login");
+            setWhoIs("student");
+          }}
         >
           <Text style={styles.text}>I'M STUDENT</Text>
         </TouchableOpacity>
@@ -25,8 +31,10 @@ const PersonScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.box}
           title={"Lecturer"}
-          // onPress={this.onpress}
-          onPress={() => navigation.navigate("LectrereDashboard")}
+          onPress={() => {
+            navigation.navigate("Login");
+            setWhoIs("lecturer");
+          }}
         >
           <Text style={styles.text}>I'M LECTURER</Text>
         </TouchableOpacity>
@@ -34,8 +42,10 @@ const PersonScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.box}
           title={"Demostator"}
-          // onPress={this.onpress}
-          onPress={() => navigation.navigate("DemoDashboard")}
+          onPress={() => {
+            navigation.navigate("Login");
+            setWhoIs("demo");
+          }}
         >
           <Text style={styles.text}>I'M DEMOSTRATOR</Text>
         </TouchableOpacity>
@@ -43,8 +53,10 @@ const PersonScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.box}
           title={"Admin"}
-          // onPress={this.onpress}
-          onPress={() => navigation.navigate("AdminDashboard")}
+          onPress={() => {
+            navigation.navigate("Login");
+            setWhoIs("admin");
+          }}
         >
           <Text style={styles.text}>I'M ADMIN</Text>
         </TouchableOpacity>
@@ -64,7 +76,6 @@ const styles = StyleSheet.create({
 
   box: {
     backgroundColor: "blue",
-    // width: "85%",
     marginTop: 20,
     height: 50,
     borderRadius: 10,
@@ -76,7 +87,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     alignSelf: "center",
     color: "white",
-    // paddingTop: 7,
   },
 
   titleText: {
@@ -85,5 +95,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default PersonScreen;
