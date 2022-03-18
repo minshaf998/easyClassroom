@@ -6,7 +6,7 @@ import LectrerDashboardScreen from "../screens/Lecture/LecturerDashboardScreen";
 import DemoDashboardScreen from "../screens/Demo/DemoDashboardScreen";
 import AdminDashboard from "../screens/Admin/AdminDashboardScreen";
 
-import { Student } from "./Student";
+import { Student } from "./StudentNav/Student";
 
 import { useLogin } from "../context/loginProvider";
 
