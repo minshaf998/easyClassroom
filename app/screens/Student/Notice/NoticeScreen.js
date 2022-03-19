@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "grey",
+    backgroundColor: "lightyellow",
   },
   card: {
     width: "90%",
     height: 90,
-    backgroundColor: "lightblue",
+    backgroundColor: "indigo",
     borderRadius: 10,
     margin: 10,
   },
@@ -52,11 +52,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
     flex: 1,
+    color: "white",
   },
 
   textNote: {
     fontSize: 18,
     padding: 5,
+    color: "white",
   },
 });
 
