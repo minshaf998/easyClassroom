@@ -1,24 +1,33 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import { NoticeData } from "./NoticeData";
 
+// console.log(NoticeData);
 // create a component
 const NoticeScreen = () => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>Notice 1</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>Notice 1</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>Notice 1</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.test}>Notice 1</Text>
-      </TouchableOpacity>
-    </View>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+    >
+      <View style={styles.container}>
+        {NoticeData.map((c) => {
+          return (
+            <TouchableOpacity style={styles.card} key={c.key}>
+              <Text style={styles.text}>From {c.from}</Text>
+              <Text style={styles.textNote}>{c.content}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -30,20 +39,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "grey",
   },
-  btn: {
-    height: 60,
-    backgroundColor: "blue",
-    width: "85%",
+  card: {
+    width: "90%",
+    height: 90,
+    backgroundColor: "lightblue",
+    borderRadius: 10,
     margin: 10,
-    borderRadius: 5,
   },
 
-  test: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "900",
-    alignSelf: "center",
-    paddingTop: 8,
+  text: {
+    fontSize: 26,
+    textAlign: "center",
+    textAlignVertical: "center",
+    flex: 1,
+  },
+
+  textNote: {
+    fontSize: 18,
+    padding: 5,
   },
 });
 
