@@ -2,10 +2,10 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-import StudentDashboardScreen from "../../screens/Student/StudentDashboardScreen";
-import GpaCalScreen from "../../screens/Student/GpaCalScreen";
-import ChatBoxScreen from "../../screens/Student/ChatBoxScreen";
-import NoticeScreen from "../../screens/Student/NoticeScreen";
+import StudentDashboardScreen from "../../screens/Student/Dashboard/StudentDashboardScreen";
+import GpaCalScreen from "../../screens/Student/Gpa/GpaCalScreen";
+import ChatBoxScreen from "../../screens/Student/ChatBox/ChatBoxScreen";
+import NoticeScreen from "../../screens/Student/Notice/NoticeScreen";
 import StudentProfileScreen from "../../screens/Student/StudentProfileScreen";
 
 const Tab = createBottomTabNavigator();
@@ -16,7 +16,7 @@ export function Student() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          console.log(route.name);
+          // console.log(route.name);
 
           if (route.name === "StudentDashboard") {
             iconName = focused ? "home" : "home-outline";
