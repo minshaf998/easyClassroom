@@ -16,6 +16,17 @@ const CreateClassScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.cardCont}>
+        <Text style={styles.cardtext}>Class name </Text>
+        <View style={styles.action}>
+          <TextInput
+            style={styles.textinput}
+            placeholder="Computer programming"
+            secureTextEntry={true}
+          />
+        </View>
+      </View>
+
+      <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Email</Text>
         <View style={styles.action}>
           <TextInput placeholder="rahn325@gmail.com" style={styles.textinput} />
