@@ -21,7 +21,6 @@ const CreateClassScreen = ({ navigation }) => {
           <TextInput
             style={styles.textinput}
             placeholder="Computer programming"
-            secureTextEntry={true}
           />
         </View>
       </View>
