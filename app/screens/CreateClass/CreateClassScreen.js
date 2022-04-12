@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   View,
   Text,
@@ -12,7 +12,35 @@ import { useLogin } from "./../../context/loginProvider";
 
 // create a component
 const CreateClassScreen = ({ navigation }) => {
+  const [className, setClasssName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const { setWhoIs, setIsLogedIn } = useLogin();
+
+  handlePress = () => {
+    console.log(className);
+    console.log(email);
+    console.log(password);
+
+    let databody = {
+      "className": className,
+      "email": email,
+      "password": password
+    }
+
+    // fetch('http://localhost:5002/stored', {
+    //   method: 'POST',
+    //   body: JSON.stringify(databody),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    // })
+    //   .then(res => res.json())
+    //   .then(data => console.log(data));
+    // }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.cardCont}>
@@ -21,6 +49,7 @@ const CreateClassScreen = ({ navigation }) => {
           <TextInput
             style={styles.textinput}
             placeholder="Computer programming"
+            onChangeText={setClasssName}
           />
         </View>
       </View>
@@ -28,7 +57,7 @@ const CreateClassScreen = ({ navigation }) => {
       <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Email</Text>
         <View style={styles.action}>
-          <TextInput placeholder="rahn325@gmail.com" style={styles.textinput} />
+          <TextInput placeholder="rahn325@gmail.com" style={styles.textinput} onChangeText={setEmail} />
         </View>
       </View>
 
@@ -39,6 +68,7 @@ const CreateClassScreen = ({ navigation }) => {
             style={styles.textinput}
             placeholder="Password"
             secureTextEntry={true}
+            onChangeText={setPassword}
           />
         </View>
       </View>
@@ -49,6 +79,7 @@ const CreateClassScreen = ({ navigation }) => {
         onPress={() => {
           setWhoIs("admin");
           setIsLogedIn(true);
+          this.handlePress();
         }}
       >
         <Text style={styles.buttontext}>Create</Text>

@@ -6,9 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "server":"nodemon server/server.js",
-    "dev": "concurrently \"npm start\" \"npm run server\""
-
+    "server": "nodemon server/server.js",
+    "dev": "concurrently  \"npm run server\" \"npm start\""
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.2.0",
