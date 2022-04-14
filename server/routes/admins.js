@@ -1,5 +1,6 @@
 const express = require('express');
 const Joi = require('joi');
+
 const router = express.Router();
 
 let admins = [
@@ -18,7 +19,8 @@ let admins = [
 ]
 
 router.get('/', (req, res) => {
-    res.send(admins);
+    console.log('from... get');
+    res.send(JSON.stringify(admins));
 })
 
 router.get('/:id', (req, res) => {
@@ -42,12 +44,10 @@ router.post('/', (req, res) => {
     });
 
     const result = schema.validate(req.body);
-    // console.log(result);
 
-    if (result.error) return res.status(400).send(result.error.message);
-
+    if (result.error) return res.status(400).send(result);
     admins.push(admin);
-    res.send(admin);
+    res.send(JSON.stringify(admin));
 })
 
 router.put('/:id', (req, res) => {

@@ -18,27 +18,25 @@ const CreateClassScreen = ({ navigation }) => {
 
   const { setWhoIs, setIsLogedIn } = useLogin();
 
-  handlePress = () => {
-    console.log(className);
-    console.log(email);
-    console.log(password);
-
-    let databody = {
-      "className": className,
-      "email": email,
-      "password": password
+  async function handlePress() {
+    const databody = {
+      name: className,
+      email: email,
+      password: password
     }
 
-    // fetch('http://localhost:5002/stored', {
-    //   method: 'POST',
-    //   body: JSON.stringify(databody),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    // })
-    //   .then(res => res.json())
-    //   .then(data => console.log(data));
-    // }
+    await fetch("http://192.168.8.145:3000/api/admins", {
+      method: 'POST',
+      body: JSON.stringify(databody),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(async res => {
+        await res.json().then(res => console.log(res)).catch(err => console.log(err));
+      })
+      .catch(error => console.log("error from", error));
   }
 
   return (
@@ -79,7 +77,7 @@ const CreateClassScreen = ({ navigation }) => {
         onPress={() => {
           setWhoIs("admin");
           setIsLogedIn(true);
-          this.handlePress();
+          handlePress();
         }}
       >
         <Text style={styles.buttontext}>Create</Text>
