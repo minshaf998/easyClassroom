@@ -6,20 +6,15 @@ const adminSchema = new mongoose.Schema({
     email: String,
     password: String
 });
+const Admin = mongoose.model("Admin", adminSchema);
 
-const adminModel = mongoose.model("adimnModel", adminSchema);
+async function createAdmin(adm) {
+    const admin = new Admin({
+        name: adm.name,
+        email: adm.email,
+        password: adm.password
+    });
+    const result = await admin.save();
+}
 
-// async function createAdmin() {
-//     const admin = new Admin({
-//         name: 'asdf',
-//         email: 'sdf',
-//         password: 'sdffd'
-//     });
-
-//     const result = await Admin.save();
-//     console.log(result);
-// }
-
-// createAdmin();
-
-module.exports = adminModel;
+module.exports.createAdmin = createAdmin;

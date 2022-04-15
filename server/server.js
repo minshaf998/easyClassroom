@@ -6,7 +6,7 @@ const logger = require('./middleware/logger');
 
 const app = express();
 
-const uri = 'mongodb+srv://inshaf:12345678easy@easyclassroomcluster.4z1zg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://inshaf:12345678easy@easyclassroomcluster.4z1zg.mongodb.net/classGroup6?retryWrites=true&w=majority';
 
 mongoose
     .connect(uri)

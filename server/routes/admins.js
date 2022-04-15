@@ -2,6 +2,7 @@ const express = require('express');
 const Joi = require('joi');
 
 const router = express.Router();
+const Admin = require('./../models/adminModel');
 
 let admins = [
     {
@@ -31,7 +32,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const admin = {
-        id: admins.length + 1,
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
@@ -44,14 +44,13 @@ router.post('/', (req, res) => {
     });
 
     const result = schema.validate(req.body);
-    // console.log(result.error.details[0].message);
 
     if (result.error) {
         const msg = result.error.details[0];
         const nmsg = (JSON.stringify(msg));
         return res.status(400).send(nmsg);
     }
-    admins.push(admin);
+    Admin.createAdmin(admin);
     res.send(JSON.stringify(admin));
 })
 
