@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 
 import { useLogin } from "./../../context/loginProvider";
@@ -22,21 +23,46 @@ const CreateClassScreen = ({ navigation }) => {
     const databody = {
       name: className,
       email: email,
-      password: password
-    }
+      password: password,
+    };
 
     await fetch("http://192.168.8.145:3000/api/admins", {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(databody),
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
     })
-      .then(async res => {
-        await res.json().then(res => console.log(res)).catch(err => console.log(err));
+      .then(async (res) => {
+        let msg = "";
+        await res
+          .json()
+          .then((res) => {
+            msg = res.message;
+          })
+          .catch((err) => console.log(err));
+
+        if (res.status === 400) {
+          Alert.alert(
+            `${msg}`,
+            ""
+            [
+            ({
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel",
+            },
+              { text: "OK", onPress: () => console.log("OK Pressed") })
+            ]
+          );
+        }
+        else {
+          setWhoIs("admin");
+          setIsLogedIn(true);
+        }
       })
-      .catch(error => console.log("error from", error));
+      .catch((error) => console.log("error from", error));
   }
 
   return (
@@ -55,7 +81,11 @@ const CreateClassScreen = ({ navigation }) => {
       <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Email</Text>
         <View style={styles.action}>
-          <TextInput placeholder="rahn325@gmail.com" style={styles.textinput} onChangeText={setEmail} />
+          <TextInput
+            placeholder="rahn325@gmail.com"
+            style={styles.textinput}
+            onChangeText={setEmail}
+          />
         </View>
       </View>
 
@@ -75,8 +105,6 @@ const CreateClassScreen = ({ navigation }) => {
         style={styles.buttonLogin}
         title={"Login"}
         onPress={() => {
-          setWhoIs("admin");
-          setIsLogedIn(true);
           handlePress();
         }}
       >

@@ -44,8 +44,13 @@ router.post('/', (req, res) => {
     });
 
     const result = schema.validate(req.body);
+    // console.log(result.error.details[0].message);
 
-    if (result.error) return res.status(400).send(result);
+    if (result.error) {
+        const msg = result.error.details[0];
+        const nmsg = (JSON.stringify(msg));
+        return res.status(400).send(nmsg);
+    }
     admins.push(admin);
     res.send(JSON.stringify(admin));
 })
