@@ -3,26 +3,53 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Alert} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
-import { loggingOut } from '../../../API/firebaseMethods/firebaseMethod';
+import { ActivityIndicator} from 'react-native';
+import { loggingOut } from '../../API/firebaseMethods/firebaseMethod';
 
-export default function LecturerDashboard({ navigation }) {
+export default function Dashboard({ navigation }) {
+  let currentUserUID = firebase.auth().currentUser.uid;
+  const [firstName, setFirstName] = useState('');
+  const [role, setRole] = useState('');
 
+  useEffect(() => {
+    async function getUserInfo(){
+      let doc = await firebase
+      .firestore()
+      .collection('users')
+      .doc(currentUserUID)
+      .get();
 
-    const handlePress = () => {
-        loggingOut();
-        navigation.replace('Home');
-      };
-    
- 
+      if (!doc.exists){
+        Alert.alert('No user data found!')
+      } else {
+        let dataObj = doc.data();
+        setFirstName(dataObj.firstName) 
+        setRole(dataObj.role)
+
+        if(dataObj.role == "Admin"){
+          navigation.replace('Admin');
+
+        }
+        else if(dataObj.role =="Demo"){
+          navigation.replace('Demo');
+        }else if(dataObj.role =="Lecturer"){
+          navigation.replace('Lecturer');
+        }else if(dataObj.role =="Student"){
+          navigation.replace('Lecturer');
+        }
+        
+      }
+    }
+    getUserInfo();
+  })
+
+  
+
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>lecturer Dashboard</Text>
-      <Text style={styles.text}>Hi </Text>
-      <TouchableOpacity style={styles.button} onPress={handlePress} >
-        <Text style={styles.buttonText}>Log Out</Text>
-      </TouchableOpacity>
-    </View>
-  )
+    <ActivityIndicator size='large' />
+  </View>
+  );
 }
 const styles = StyleSheet.create({
   container: {

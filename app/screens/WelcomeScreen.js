@@ -1,41 +1,37 @@
-import React from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  SafeAreaView,
-  Image,
-  Button,
-  TouchableOpacity,
-} from "react-native";
 
-function WelcomeScreen({ navigation }) {
+import {ImageBackground, StyleSheet, View, Text,TouchableOpacity ,SafeAreaView,Image} from 'react-native';
+import React from 'react';
+
+
+export default function WelcomeScreen ({navigation}) {
   return (
+     
     <SafeAreaView style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image
-          style={styles.logo}
-          source={require("./../assets/logo.png")}
-        ></Image>
-        <Text style={styles.text}>TIME TO LEARN</Text>
-      </View>
+    <View style={styles.logoContainer}>
+      <Image
+        style={styles.logo}
+        source={require("./../assets/logo.png")}
+      ></Image>
+      <Text style={styles.text}>TIME TO LEARN</Text>
+    </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          title="Login"
-          onPress={() => navigation.navigate("Person")}
-        >
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: "red", marginTop: 5 }]}
-          title="create class"
-          onPress={() => navigation.navigate("createClass")}
-        >
-          <Text style={styles.buttonText}>Create Class Room</Text>
-        </TouchableOpacity>
-      </View>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity
+        style={styles.button}
+        title="Login"
+        onPress={() => navigation.navigate('Sign In')}
+      >
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+     
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: "red", marginTop: 5 }]}
+        title="create class"
+        onPress={() => navigation.navigate('Sign Up')}
+      >
+        <Text style={styles.buttonText}>Registration</Text>
+      </TouchableOpacity>
+    </View>
     </SafeAreaView>
   );
 }
@@ -88,5 +84,3 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
 });
-
-export default WelcomeScreen;

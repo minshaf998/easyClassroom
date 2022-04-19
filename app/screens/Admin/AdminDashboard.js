@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
 import { loggingOut } from '../../../API/firebaseMethods/firebaseMethod';
 
-export default function LecturerDashboard({ navigation }) {
+export default function AdminDashboard({ navigation }) {
 
 
     const handlePress = () => {
@@ -16,7 +16,7 @@ export default function LecturerDashboard({ navigation }) {
  
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>lecturer Dashboard</Text>
+      <Text style={styles.titleText}>Admin Dashboard</Text>
       <Text style={styles.text}>Hi </Text>
       <TouchableOpacity style={styles.button} onPress={handlePress} >
         <Text style={styles.buttonText}>Log Out</Text>

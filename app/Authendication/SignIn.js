@@ -1,29 +1,37 @@
-import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
 
-import { useLogin } from "../../context/loginProvider";
+import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { signIn } from '../../API/firebaseMethods/firebaseMethod';
 
-const LoginScreen = ({ navigation }) => {
-  const { setIsLogedIn } = useLogin();
+export default function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handlePress = () => {
+    if (!email) {
+      Alert.alert('Email field is required.');
+    }
+
+    if (!password) {
+      Alert.alert('Password field is required.');
+    }
+
+    signIn(email, password);
+    setEmail('');
+    setPassword('');
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={styles.cardCont}>
-        <Text style={styles.cardtext}>Class Code</Text>
-        <View style={styles.action}>
-          <TextInput placeholder="39563" style={styles.textinput} />
-        </View>
-      </View>
 
-      <View style={styles.cardCont}>
+    <View style={styles.container}>
+       <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Email</Text>
         <View style={styles.action}>
-          <TextInput placeholder="rahn325@gmail.com" style={styles.textinput} />
+          <TextInput  placeholder="Enter your email"
+            value={email}
+            onChangeText={(email) => setEmail(email)}
+            autoCapitalize="none" style={styles.textinput} />
         </View>
       </View>
 
@@ -32,24 +40,24 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.action}>
           <TextInput
             style={styles.textinput}
-            placeholder="Your password"
+            placeholder="Enter your password"
+            value={password}
+            onChangeText={(password) => setPassword(password)}
             secureTextEntry={true}
           />
         </View>
       </View>
 
-      <TouchableOpacity
-        style={styles.buttonLogin}
-        title={"Login"}
-        onPress={() => setIsLogedIn(true)}
-      >
+      
+      <TouchableOpacity   style={styles.buttonLogin} onPress={handlePress}>
         <Text style={styles.buttontext}>Login</Text>
       </TouchableOpacity>
     </View>
   );
-};
+    
+}
 
-// define your styles
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -96,6 +104,3 @@ const styles = StyleSheet.create({
     paddingTop: 7,
   },
 });
-
-//make this component available to the app
-export default LoginScreen;
