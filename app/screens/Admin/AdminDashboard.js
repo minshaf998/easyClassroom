@@ -1,92 +1,128 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Alert} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import * as firebase from 'firebase';
-import { loggingOut } from '../../../API/firebaseMethods/firebaseMethod';
+import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeScreen from '../Tabs/HomeScreen';
+import SettingScreen from '../Tabs/SettingScreen';
+import PostScreen from '../Tabs/PostScreen';
+import FindScreen from '../Tabs/FindScreen';
+import ChatScreen from '../Tabs/ChatScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
-export default function AdminDashboard({ navigation }) {
 
+const Tab = createBottomTabNavigator();
+const Draw = createDrawerNavigator();
 
-    const handlePress = () => {
-        loggingOut();
-        navigation.replace('Home');
-      };
+function TabNavigation(){
+  return(
+    <Tab.Navigator 
+    screenOptions={{
+      tabBarShowLabel : false,
+      tabBarStyle:{
+        position :'absolute',
+        bottom: 25,
+        left: 20,
+        right: 20,
+        backgroundColor: '#ffffff',
+        borderRadius : 15,
+        height : 90,
+
+      }
+
+    }}>
+    <Tab.Screen name="AdminHome" component={HomeScreen}
+     options = {{
+     
+       tabBarIcon :({focused}) => (
+         <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
+           <FontAwesome name="home" size={30} color="blue" height = {5}  />
+           <Text style = {{ color: 'black', fontWeight:'20'}}>Home</Text>
+         </View>
+      ),
+      headerShown:false,
+       
+     }}/>
+    <Tab.Screen name="AdminPost" component={PostScreen}
+    options = {{
+      
+      tabBarIcon :({focused}) => (
+        <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
+         <FontAwesome name="newspaper-o" size={24} color="blue" />
+          <Text style = {{ color: 'black', fontWeight:'20'}}>Post</Text>
+        </View>
+     ),
+     headerShown:false,
     
- 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Admin Dashboard</Text>
-      <Text style={styles.text}>Hi </Text>
-      <TouchableOpacity style={styles.button} onPress={handlePress} >
-        <Text style={styles.buttonText}>Log Out</Text>
-      </TouchableOpacity>
+    }}/>
+    <Tab.Screen name="AdminChat" component={ChatScreen}
+    options = {{
+      
+      tabBarIcon :({focused}) => (
+        <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
+         <Entypo name="chat" size={24} color="blue" />
+          <Text style = {{ color: 'black', fontWeight:'20'}}>Chat</Text>
+        </View>
+     ),
+     headerShown:false,
+    
+    }}/>
+
+    <Tab.Screen name="AdminSearch" component={FindScreen}
+    options = {{
+      
+      tabBarIcon :({focused}) => (
+        <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
+         <FontAwesome name="search" size={24} color="blue" />
+          <Text style = {{   color: 'black'}}>Search</Text>
+        </View>
+     ),
+     headerShown:false,
+    
+    }}/>
+
+    <Tab.Screen name="AdminSettings" component={SettingScreen}
+    options = {{
+      
+      tabBarIcon :({focused}) => (
+        <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
+         <Ionicons name="settings" size={24} color="blue" />
+          <Text style = {{ color: 'black', fontWeight:'20'}}>Settings</Text>
+        </View>
+     ),
+     headerShown:false,
+    
+    }}/>    
+
+  </Tab.Navigator>
+
+  )
+}
+
+function FirstItem(){
+  return(
+    <View>
+      <Text> First Item</Text>
     </View>
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-    paddingTop: 30,
+export default function AdminDashboard({ navigation }) {
+
+
+    
+  return (
+    <Draw.Navigator>
+      <Draw.Screen name = 'firstItem' component= {TabNavigation } />
+    </Draw.Navigator>
+
    
-    backgroundColor: "#C0C0C0",
-  },
+      
+  )
+}
 
-  cardCont: {
-    marginTop: 20,
-    
-
-    
-  },
-
-  cardtext: {
-    fontSize: 12,
-    fontWeight: "bold",
-    marginBottom: 2,
-  },
-  action: {
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
-    paddingBottom: 5,
-    marginBottom: 5,
-  },
-
-  textinput: {
-    color: "black",
-    fontSize: 15,
-  },
-
-  buttonSignup: {
-    width: "30%",
-    height: 50,
-    borderRadius: 10,
-    backgroundColor: "#808000",
-    top: 40,
-    marginBottom:5,
-    alignSelf: "center",
-  },
-  buttonSignIn: {
-    
-    width: "30%",
-    height: 35,
-    borderRadius: 10,
-    textAlign:'center',
-    backgroundColor: "#808000",
-    alignSelf: "center",
-  },
-
-  inlineText:{
-    color:'blue',
-    marginTop:35,
-    
-  },
-
-  buttontext: {
-    fontSize: 15,
-    fontWeight: "500",
-    alignSelf: "center",
-    paddingTop: 7,
-  },
-});
+const  style = StyleSheet.create({
+ 
+})

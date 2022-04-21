@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import * as firebase from 'firebase';
 import "firebase/firestore";
@@ -9,10 +9,10 @@ export default function LoadingScreen({ navigation }){
 
     firebase.auth().onAuthStateChanged(function(user){
           if (user) {
-             navigation.replace('NavigateUser');
+             navigation.navigate('NavigateUser');
 
           }else {
-              navigation.replace('Home'); 
+              navigation.navigate('Home'); 
             }
           });
 
@@ -21,7 +21,7 @@ export default function LoadingScreen({ navigation }){
 
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.horizontal]}>
       <ActivityIndicator size='large' />
     </View>
   );
@@ -31,49 +31,11 @@ export default function LoadingScreen({ navigation }){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "lightgreen",
-    justifyContent: "flex-end",
-    alignItems: "center",
+    justifyContent: "center"
   },
-
-  newButton: {
-    width: "100%",
-  },
-
-  button: {
-    backgroundColor: "blue",
-    height: 50,
-    borderRadius: 9,
-    paddingTop: 5,
-  },
-
-  logo: {
-    width: 150,
-    height: 150,
-  },
-
-  logoContainer: {
-    position: "absolute",
-    top: 100,
-    alignItems: "center",
-  },
-
-  buttonText: {
-    color: "white",
-    fontSize: 25,
-    alignSelf: "center",
-  },
-
-  text: {
-    fontWeight: "bold",
-    position: "absolute",
-    top: 130,
-    fontSize: 20,
-  },
-
-  buttonContainer: {
-    width: "90%",
-    marginBottom: 30,
-  },
+  horizontal: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10
+  }
 });
-
