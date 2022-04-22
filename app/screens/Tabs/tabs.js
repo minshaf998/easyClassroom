@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import HomeScreen from  '../Admin/AdminDashboard';
+import HomeScreen from  '../users/Admin/AdminDashboard';
 import FindScreen from  './FindScreen';
 import ChatScreen from './ChatScreen';
 import SettingScreen from './SettingScreen';

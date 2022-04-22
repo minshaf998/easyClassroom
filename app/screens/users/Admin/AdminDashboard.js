@@ -1,17 +1,18 @@
 
 import React from 'react';
-import { View, Text, StyleSheet, Alert} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from '../Tabs/HomeScreen';
-import SettingScreen from '../Tabs/SettingScreen';
-import PostScreen from '../Tabs/PostScreen';
-import FindScreen from '../Tabs/FindScreen';
-import ChatScreen from '../Tabs/ChatScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from '../../Tabs/HomeScreen';
+import SettingScreen from '../../Tabs/SettingScreen';
+import PostScreen from '../../Tabs/PostScreen';
+import FindScreen from '../../Tabs/FindScreen';
+import ChatScreen from '../../Tabs/ChatScreen';
+
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import ProfileImage from "../../CurryImagePicker";
 
 
 const Tab = createBottomTabNavigator();
@@ -40,7 +41,7 @@ function TabNavigation(){
        tabBarIcon :({focused}) => (
          <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
            <FontAwesome name="home" size={30} color="blue" height = {5}  />
-           <Text style = {{ color: 'black', fontWeight:'20'}}>Home</Text>
+           <Text style = {{ color: 'black'}}>Home</Text>
          </View>
       ),
       headerShown:false,
@@ -52,7 +53,7 @@ function TabNavigation(){
       tabBarIcon :({focused}) => (
         <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
          <FontAwesome name="newspaper-o" size={24} color="blue" />
-          <Text style = {{ color: 'black', fontWeight:'20'}}>Post</Text>
+          <Text style = {{ color: 'black'}}>Post</Text>
         </View>
      ),
      headerShown:false,
@@ -64,7 +65,7 @@ function TabNavigation(){
       tabBarIcon :({focused}) => (
         <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
          <Entypo name="chat" size={24} color="blue" />
-          <Text style = {{ color: 'black', fontWeight:'20'}}>Chat</Text>
+          <Text style = {{ color: 'black'}}>Chat</Text>
         </View>
      ),
      headerShown:false,
@@ -90,7 +91,7 @@ function TabNavigation(){
       tabBarIcon :({focused}) => (
         <View style={{ alignItems:'center', justifyContent:'center',top :10}}>
          <Ionicons name="settings" size={24} color="blue" />
-          <Text style = {{ color: 'black', fontWeight:'20'}}>Settings</Text>
+          <Text style = {{ color: 'black'}}>Settings</Text>
         </View>
      ),
      headerShown:false,
@@ -102,13 +103,7 @@ function TabNavigation(){
   )
 }
 
-function FirstItem(){
-  return(
-    <View>
-      <Text> First Item</Text>
-    </View>
-  )
-}
+
 export default function AdminDashboard({ navigation }) {
 
 
@@ -116,6 +111,7 @@ export default function AdminDashboard({ navigation }) {
   return (
     <Draw.Navigator>
       <Draw.Screen name = 'firstItem' component= {TabNavigation } />
+      <Draw.Screen name = 'proImage' component= { ProfileImage} />
     </Draw.Navigator>
 
    
@@ -123,6 +119,3 @@ export default function AdminDashboard({ navigation }) {
   )
 }
 
-const  style = StyleSheet.create({
- 
-})

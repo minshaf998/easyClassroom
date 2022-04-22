@@ -27,18 +27,18 @@ export default function Dashboard({ navigation }) {
         setRole(dataObj.role)
 
         if(dataObj.role == "Admin"){
-          navigation.navigate('Admin');
+          navigation.replace('Admin');
 
         }
         else if(dataObj.role =="Demo"){
-          navigation.navigate('Demo');
+          navigation.replace('Demo');
         }else if(dataObj.role =="Lecturer"){
-          navigation.navigate('Lecturer');
+          navigation.replace('Lecturer');
         }else if(dataObj.role =="Student"){
-          navigation.navigate('Lecturer');
+          navigation.replace('Lecturer');
         }
         
-      }
+      }0
     }
     getUserInfo();
   })

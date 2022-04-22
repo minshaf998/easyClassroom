@@ -2,11 +2,11 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-import StudentDashboardScreen from "../../screens/Student/Dashboard/StudentDashboardScreen";
-import GpaCalScreen from "../../screens/Student/Gpa/GpaCalScreen";
-import ChatBoxScreen from "../../screens/Student/ChatBox/ChatBoxScreen";
-import NoticeScreen from "../../screens/Student/Notice/NoticeScreen";
-import StudentProfileScreen from "../../screens/Student/StudentProfileScreen";
+import StudentDashboardScreen from "../../screens/users/Student/Dashboard/StudentDashboardScreen";
+import GpaCalScreen from "../../screens/users/Student/Gpa/GpaCalScreen";
+import ChatBoxScreen from "../../screens/users/Student/ChatBox/ChatBoxScreen";
+import NoticeScreen from "../../screens/users/Student/Notice/NoticeScreen";
+import StudentProfileScreen from "../../screens/users/Student/StudentProfileScreen";
 
 const Tab = createBottomTabNavigator();
 

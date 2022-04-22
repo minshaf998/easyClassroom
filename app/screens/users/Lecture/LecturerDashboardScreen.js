@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Alert} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
-import { loggingOut } from '../../../API/firebaseMethods/firebaseMethod';
+import { loggingOut } from '../../../../API/firebaseMethods/firebaseMethod';
 
-export default function StudentDashboard({ navigation }) {
+export default function LecturerDashboard({ navigation }) {
 
 
     const handlePress = () => {
@@ -16,7 +16,7 @@ export default function StudentDashboard({ navigation }) {
  
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Student Dashboard</Text>
+      <Text style={styles.titleText}>lecturer Dashboard</Text>
       <Text style={styles.text}>Hi </Text>
       <TouchableOpacity style={styles.button} onPress={handlePress} >
         <Text style={styles.buttonText}>Log Out</Text>
