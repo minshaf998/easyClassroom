@@ -38,7 +38,7 @@ export default function Dashboard({ navigation }) {
           navigation.replace('Lecturer');
         }
         
-      }0
+      }
     }
     getUserInfo();
   })

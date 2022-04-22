@@ -1,6 +1,9 @@
+
 import * as firebase from "firebase";
 import "firebase/firestore";
 import {Alert} from "react-native";
+
+ 
 
 export async function registration(email,role, password, lastName, firstName) {
   try {
@@ -26,6 +29,7 @@ export async function signIn(email, password) {
    await firebase
       .auth()
       .signInWithEmailAndPassword(email, password);
+     
   } catch (err) {
     Alert.alert("There is something wrong!", err.message);
   }

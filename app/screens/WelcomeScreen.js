@@ -12,7 +12,7 @@ export default function WelcomeScreen ({navigation}) {
         style={styles.logo}
         source={require("./../assets/logo.png")}
       ></Image>
-      <Text style={styles.text}>TIME TO LEARN</Text>
+      <Text style={styles.text}> TIME TO LEARN </Text>
     </View>
 
     <View style={styles.buttonContainer}>
@@ -21,15 +21,15 @@ export default function WelcomeScreen ({navigation}) {
         title="Login"
         onPress={() => navigation.navigate('Sign In')}
       >
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>SignIn</Text>
       </TouchableOpacity>
      
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: "red", marginTop: 5 }]}
+        style={[styles.button, { backgroundColor: "#b5b4b1" }]}
         title="create class"
         onPress={() => navigation.navigate('Sign Up')}
       >
-        <Text style={styles.buttonText}>Registration</Text>
+        <Text style={styles.buttonText}>SignUp </Text>
       </TouchableOpacity>
     </View>
     </SafeAreaView>
@@ -39,7 +39,7 @@ export default function WelcomeScreen ({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "lightgreen",
+    backgroundColor: "#ffffff",
     justifyContent: "flex-end",
     alignItems: "center",
   },
@@ -49,25 +49,26 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "blue",
-    height: 50,
+    marginBottom: 20,
+    backgroundColor: "#34dbeb",
+    height: 60,
     borderRadius: 9,
     paddingTop: 5,
   },
 
   logo: {
-    width: 150,
-    height: 150,
+    width: 190,
+    height: 190,
   },
 
   logoContainer: {
     position: "absolute",
-    top: 100,
+    top: 180,
     alignItems: "center",
   },
 
   buttonText: {
-    color: "white",
+    color: "black",
     fontSize: 25,
     alignSelf: "center",
   },
@@ -75,12 +76,14 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     position: "absolute",
+    color :'black',
+    marginTop : 30,
     top: 130,
     fontSize: 20,
   },
 
   buttonContainer: {
-    width: "90%",
+    width: "70%",
     marginBottom: 30,
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View ,Text,Image} from 'react-native';
 import * as firebase from 'firebase';
 import "firebase/firestore";
 
@@ -21,9 +21,14 @@ export default function LoadingScreen({ navigation }){
 
 
   return (
-    <View style={[styles.container, styles.horizontal]}>
-      <ActivityIndicator size='large' />
-    </View>
+    <View style={styles.container}>
+        <Image
+          style={styles.logo}
+          source={require("../assets/logo.png")}
+        ></Image>
+        <Text style={{color: 'black', fontSize: 40}}>Easy Classroom</Text>
+        <ActivityIndicator color="blue" size="large" />
+      </View>
   );
 
 
@@ -31,11 +36,13 @@ export default function LoadingScreen({ navigation }){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:'#ffffff'
   },
-  horizontal: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    padding: 10
-  }
+
+  logo: {
+    width: 150,
+    height: 150,
+  },
 });

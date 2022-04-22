@@ -52,9 +52,15 @@ export default function SignUp({ navigation }) {
   };
 
   return (
+    
+    <SafeAreaView style={styles.container}>
+      <View>
+      <Text style={styles.text}>SignUp </Text>
+      </View>
+      <ScrollView style={styles.scrollView}>
    
-     <View style={styles.container}>
-       <Text style={styles.text}>Create an account </Text>
+     <View >
+       
 
         
 
@@ -63,7 +69,7 @@ export default function SignUp({ navigation }) {
         <View style={styles.action}>
           <TextInput  
            style={styles.textinput}
-           placeholder="First name*"
+           placeholder="First name"
            value={firstName}
            onChangeText={(name) => setFirstName(name)} />
         </View>
@@ -85,7 +91,7 @@ export default function SignUp({ navigation }) {
         <View style={styles.action}>
           <TextInput  
           style={styles.textinput}
-          placeholder="Enter your email*"
+          placeholder="Enter your email"
           value={email}
           onChangeText={(email) => setEmail(email)}
           keyboardType="email-address"
@@ -98,7 +104,7 @@ export default function SignUp({ navigation }) {
         <Text>
                 {role ?
                   `My role is ${role}` :
-                    "Please select role"
+                    "Select Role"
                 }
             </Text>
         </Text>
@@ -120,7 +126,7 @@ export default function SignUp({ navigation }) {
         <View style={styles.action}>
           <TextInput  
          style={styles.textinput}
-         placeholder="Enter your password*"
+         placeholder="Enter your password"
          value={password}
          onChangeText={(password) => setPassword(password)}
          secureTextEntry={true} />
@@ -144,15 +150,17 @@ export default function SignUp({ navigation }) {
       
          
           <TouchableOpacity  style={styles.buttonSignup} onPress={handlePress}>
-           <Text style={styles.buttontext}>Sign Up</Text>
+           <Text style={styles.SignUpText}>Sign Up</Text>
           </TouchableOpacity>
 
+          
+          <TouchableOpacity  onPress={() => navigation.navigate('Sign In')}>
           <Text style={styles.inlineText}>Already have an account?</Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Sign In')}>
-            <Text style={styles.buttonSignIn}>Sign In</Text>
           </TouchableOpacity>
       
      </View>
+    </ScrollView>
+  </SafeAreaView>
     
   );
 }
@@ -163,18 +171,28 @@ const styles = StyleSheet.create({
     padding: 15,
     paddingTop: 30,
    
-    backgroundColor: "#C0C0C0",
+    backgroundColor: "#ffffff",
+  },
+  scrollView: {
+    backgroundColor: '#ffffff',
+    marginHorizontal: 1,
   },
 
   cardCont: {
-    marginTop: 20,
-    
-
-    
+    marginTop: 10,
+    marginLeft: 20,
+    padding : 5,
+    width:'80%',
+  },
+  text :{
+    marginBottom : 20,
+    fontSize : 25,
+    fontWeight: 'bold',
   },
 
   cardtext: {
-    fontSize: 12,
+    marginLeft : 3,
+    fontSize: 20,
     fontWeight: "bold",
     marginBottom: 2,
   },
@@ -187,32 +205,34 @@ const styles = StyleSheet.create({
   },
 
   textinput: {
+    marginLeft : 10,
     color: "black",
     fontSize: 15,
   },
 
   buttonSignup: {
-    width: "30%",
+    backgroundColor: "#34dbeb",
+    alignSelf: "center",
     height: 50,
-    borderRadius: 10,
-    backgroundColor: "#808000",
-    top: 40,
-    marginBottom:5,
-    alignSelf: "center",
-  },
-  buttonSignIn: {
+    borderRadius: 9,
+    marginTop : 50,
+    paddingTop: 3, 
+    width : '70%',
+    marginTop : 10,
     
-    width: "30%",
-    height: 35,
-    borderRadius: 10,
-    textAlign:'center',
-    backgroundColor: "#808000",
-    alignSelf: "center",
   },
+  
+  SignUpText :{
+    fontSize : 20,
+    alignSelf: "center",
+    fontWeight : 'bold',
+  },
+ 
 
   inlineText:{
     color:'blue',
-    marginTop:35,
+    marginTop:15,
+    alignSelf: "center",
     
   },
 

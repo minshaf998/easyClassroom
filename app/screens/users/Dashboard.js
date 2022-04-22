@@ -12,7 +12,8 @@ import FindScreen from '../Tabs/FindScreen';
 import ChatScreen from '../Tabs/ChatScreen';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import ProfileImage from "../CurryImagePicker";
+import { loggingOut } from '../../../API/firebaseMethods/firebaseMethod';
+import ProfilePic from '../Profile/ProfilePicture/ProfilePicture';
 
 
 const Tab = createBottomTabNavigator();
@@ -106,12 +107,13 @@ function TabNavigation(){
 
 export default function AdminDashboard({ navigation }) {
 
-
+    
     
   return (
     <Draw.Navigator>
-      <Draw.Screen name = 'firstItem' component= {TabNavigation } />
-      <Draw.Screen name = 'proImage' component= { ProfileImage} />
+      <Draw.Screen name = 'Easy Classroom' component= {TabNavigation } />
+      <Draw.Screen name = 'Profile' component= { ProfilePic} />
+     
     </Draw.Navigator>
 
    
