@@ -11,7 +11,7 @@ import PostScreen from '../Tabs/PostScreen';
 import FindScreen from '../Tabs/FindScreen';
 import ChatScreen from '../Tabs/ChatScreen';
 
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createDrawerNavigator ,DrawerContentScrollView, DrawerItemList, DrawerItem} from '@react-navigation/drawer';
 import { loggingOut } from '../../../API/firebaseMethods/firebaseMethod';
 import ProfilePic from '../Profile/ProfilePicture/ProfilePicture';
 
@@ -107,10 +107,20 @@ function TabNavigation(){
 
 export default function AdminDashboard({ navigation }) {
 
-    
+    const handlePress = () => {
+        loggingOut();
+        navigation.replace('Home');
+      };
     
   return (
-    <Draw.Navigator>
+    <Draw.Navigator initialRouteName="Easy Classroom'" drawerContent={props => {
+        return (
+          <DrawerContentScrollView {...props}>
+            <DrawerItemList {...props} />
+            <DrawerItem label="Logout" onPress={handlePress} />
+          </DrawerContentScrollView>
+        )
+      }}>
       <Draw.Screen name = 'Easy Classroom' component= {TabNavigation } />
       <Draw.Screen name = 'Profile' component= { ProfilePic} />
      

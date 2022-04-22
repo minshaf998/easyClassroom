@@ -6,7 +6,7 @@ import {View,Text,StyleSheet} from 'react-native';
 export default function AdminSettingScreen({Navigation}){
     return(
         <View style={styles.container}>
-            <Text>AdminChatScreen</Text>
+            <Text>SettingsScreen</Text>
         </View>
     );
 }

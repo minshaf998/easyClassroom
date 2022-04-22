@@ -7,7 +7,7 @@ export default function AdminFindScreen({navigation}){
 
   return(
     <View style={styles.container}>
-        <Text>AdminChatScreen</Text>
+        <Text>SearchScreen</Text>
     </View>
 );
 }

@@ -5,19 +5,13 @@ import { loggingOut } from '../../../API/firebaseMethods/firebaseMethod';
 
 export default function AdminHomeScreen({navigation}){
 
-    const handlePress = () => {
-        loggingOut();
-        navigation.replace('Home');
-      };
+    
     
  
     return(
-        <View style={styles.container}>
-      <Text style={styles.titleText}>Demo Dashboard</Text>
-      <Text style={styles.text}>Hi </Text>
-      <TouchableOpacity style={styles.button} onPress={handlePress} >
-        <Text style={styles.buttonText}>Log Out</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      <Text style={styles.titleText}>Home</Text>
+      
     </View>
     );
 }
