@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component } from "react";
-import {SafeAreaView ,View, Text,TouchableOpacity, StyleSheet } from "react-native";
-import{FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons';
+import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../../config/colors.js';
 
@@ -11,16 +11,16 @@ const StudentProfileScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.upperpart}>
-        <FontAwesome 
-        name="user-circle-o" 
-        size={24} 
-        color="black" />
+        <FontAwesome
+          name="user-circle-o"
+          size={24}
+          color="black" />
         <Text style={styles.username}>Ayoma Fernando</Text>
         <TouchableOpacity style={styles.editicon}>
-          <MaterialCommunityIcons 
-          name="circle-edit-outline" 
-          size={10} 
-          color= 'colors.secondary' />
+          <MaterialCommunityIcons
+            name="circle-edit-outline"
+            size={10}
+            color='colors.secondary' />
         </TouchableOpacity>
       </View>
       <View style={styles.lowerpart}>
@@ -43,9 +43,9 @@ const StudentProfileScreen = () => {
 
 // define your styles
 const styles = StyleSheet.create({
-  card:{
+  card: {
     width: 100,
-    height:30,
+    height: 30,
 
   },
 
@@ -57,20 +57,20 @@ const styles = StyleSheet.create({
   },
 
 
-  editicon:{
+  editicon: {
     width: 20,
-    Height: 20,
+    height: 20,
     position: "relative",
   },
 
-  lowerpart:{
+  lowerpart: {
     flex: 0.5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.white,  
+    backgroundColor: colors.white,
   },
 
-  subtitle:{
+  subtitle: {
     fontSize: 10,
     fontStyle: "normal",
     fontWeight: "normal",
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     lineHeight: 30,
   },
 
-  title:{
+  title: {
     fontSize: 16,
     fontStyle: "normal",
     fontWeight: "bold",
@@ -89,19 +89,18 @@ const styles = StyleSheet.create({
     lineHeight: 10,
   },
 
-  upperpart:{
+  upperpart: {
     flex: 0.5,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colors.white,
   },
 
-  username:{
+  username: {
     fontSize: 24,
     fontStyle: "normal",
     fontWeight: "bold",
     color: "white",
-    textTransform: "Capitalize",
     textAlign: "right",
   },
 });
