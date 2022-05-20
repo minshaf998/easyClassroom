@@ -22,13 +22,15 @@ export default function LoadingScreen({ navigation }){
 
   return (
     <View style={styles.container}>
+     
         <Image
           style={styles.logo}
           source={require("../assets/logo.png")}
         ></Image>
-        <Text style={{color: 'black', fontSize: 40}}>Easy Classroom</Text>
+        <Text style={{color: 'black', fontSize: 12,marginBottom:20, marginStart:-10}}>Easy Classroom</Text>
         <ActivityIndicator color="blue" size="large" />
-      </View>
+     
+    </View>
   );
 
 
@@ -36,13 +38,18 @@ export default function LoadingScreen({ navigation }){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor:'#ffffff'
   },
 
   logo: {
-    width: 200,
-    height: 200,
+    
+    width: 150,
+    height: 150,
+    marginBottom:-40,
+    marginTop:-60
   },
+  
 });

@@ -27,7 +27,7 @@ export default function WelcomeScreen ({navigation}) {
       <TouchableOpacity
         style={[styles.button, { backgroundColor: "#b5b4b1" }]}
         title="create class"
-        onPress={() => navigation.navigate('Sign Up')}
+        onPress={() => navigation.navigate('VerifyRole')}
       >
         <Text style={styles.buttonText}>SignUp </Text>
       </TouchableOpacity>
@@ -52,8 +52,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: "#34dbeb",
     height: 60,
-    borderRadius: 9,
+    borderRadius: 12,
     paddingTop: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+	  width: 0,
+	  height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 5,
   },
 
   logo: {
@@ -68,6 +76,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
+    marginTop : 5,
     color: "black",
     fontSize: 25,
     alignSelf: "center",
