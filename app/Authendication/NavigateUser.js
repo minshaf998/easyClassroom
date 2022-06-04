@@ -1,9 +1,9 @@
 
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Alert} from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
-import { ActivityIndicator} from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { loggingOut } from '../../API/firebaseMethods/firebaseMethod';
 
 export default function Dashboard({ navigation }) {
@@ -12,43 +12,41 @@ export default function Dashboard({ navigation }) {
   const [role, setRole] = useState('');
 
   useEffect(() => {
-    async function getUserInfo(){
+    async function getUserInfo() {
       let doc = await firebase
-      .firestore()
-      .collection('users')
-      .doc(currentUserUID)
-      .get();
+        .firestore()
+        .collection('users')
+        .doc(currentUserUID)
+        .get();
 
-      if (!doc.exists){
+      if (!doc.exists) {
         Alert.alert('No user data found!')
       } else {
         let dataObj = doc.data();
-        setFirstName(dataObj.firstName) 
+        setFirstName(dataObj.firstName)
         setRole(dataObj.role)
 
-        if(dataObj.role == "Admin"){
+        if (dataObj.role == "Admin") {
           navigation.replace('Admin');
 
         }
-        else if(dataObj.role =="Demo"){
+        else if (dataObj.role == "Demo") {
           navigation.replace('Demo');
-        }else if(dataObj.role =="Lecturer"){
+        } else if (dataObj.role == "Lecturer") {
           navigation.replace('Lecturer');
-        }else if(dataObj.role =="Student"){
+        } else if (dataObj.role == "Student") {
           navigation.replace('Lecturer');
         }
-        
+
       }
     }
     getUserInfo();
   })
 
-  
-
   return (
     <View style={styles.container}>
-    <ActivityIndicator size='large' />
-  </View>
+      <ActivityIndicator size='large' />
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -56,15 +54,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 15,
     paddingTop: 30,
-   
+
     backgroundColor: "#C0C0C0",
   },
 
   cardCont: {
     marginTop: 20,
-    
 
-    
+
+
   },
 
   cardtext: {
@@ -91,23 +89,23 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#808000",
     top: 40,
-    marginBottom:5,
+    marginBottom: 5,
     alignSelf: "center",
   },
   buttonSignIn: {
-    
+
     width: "30%",
     height: 35,
     borderRadius: 10,
-    textAlign:'center',
+    textAlign: 'center',
     backgroundColor: "#808000",
     alignSelf: "center",
   },
 
-  inlineText:{
-    color:'blue',
-    marginTop:35,
-    
+  inlineText: {
+    color: 'blue',
+    marginTop: 35,
+
   },
 
   buttontext: {
