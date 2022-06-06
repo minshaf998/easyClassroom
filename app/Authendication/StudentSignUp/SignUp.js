@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Alert, ScrollView, Keyboard ,StyleSheet, SafeAreaView} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { registration } from '../../API/firebaseMethods/firebaseMethod';
+import {StudentRegistration} from '../../../API/firebaseMethods/firebaseMethod';
 import * as firebase from "firebase";
 import "firebase/firestore";
 import RNPickerSelect from "react-native-picker-select";
 
+
 export default function StudentSignUp({ navigation }) {
 
-  
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
@@ -18,7 +19,6 @@ export default function StudentSignUp({ navigation }) {
   const [course , setCourse] = useState('');
   const [registrationNumber , setRegistrationNumber] = useState('');
   const [indexNumber , setIndexNumber] = useState('');
-  const [role, setRole] = useState('');
   const [faculty, setFaculty] = useState('');
   //const [department, setDeparment] = useState('');
   const [email, setEmail] = useState('');
@@ -34,16 +34,13 @@ export default function StudentSignUp({ navigation }) {
     setCourse('');
     setRegistrationNumber('');
     setIndexNumber('');
-    //setRole('');
     setFaculty('');
-   // setDeparment('');
     setEmail('');
     setPassword('');
     setConfirmPassword('');
   };
 
   const handlePress = () => {
-   
     if (!firstName) {
       Alert.alert('First name is required');
     } else if (!lastName) {
@@ -70,7 +67,7 @@ export default function StudentSignUp({ navigation }) {
     } else if (password !== confirmPassword) {
       Alert.alert('Password does not match!');
     } else {
-      registration(
+      StudentRegistration(
         email,
         password,
         lastName,
@@ -81,6 +78,7 @@ export default function StudentSignUp({ navigation }) {
         district,
         course,
         faculty,
+        
         
       );
       navigation.navigate('Loading');
@@ -279,9 +277,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     marginTop:20,
-    marginBottom: 10,
-    marginLeft : 25,
-    marginRight :25,
+    marginBottom: 15,
     borderRadius:15,
     backgroundColor: '#ffffff',
     marginHorizontal: 1,
@@ -292,19 +288,20 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.9,
     shadowRadius: 10,
-    elevation: 0.8,
+    elevation: 0.2,
 
   },
 
   cardCont: {
     marginTop: 10,
-    marginLeft: 20,
+    alignSelf :'center',
     padding : 5,
     width:'80%',
   },
   text :{
+    alignSelf : 'center',
     marginBottom : 20,
-    fontSize : 25,
+    fontSize : 30,
     fontWeight: 'bold',
   },
 
@@ -315,11 +312,21 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   action: {
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
+    marginTop: 5,
+    
+    borderRadius : 10,
     paddingBottom: 5,
     marginBottom: 5,
+    width: '100%',
+    backgroundColor :'white',
+    shadowColor: "#000",
+    shadowOffset: {
+	  width: 0,
+	  height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 8,
   },
 
   textinput: {
@@ -333,10 +340,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 50,
     borderRadius: 9,
-    marginTop : 80,
+    marginTop : 90,
     marginBottom :20,
     paddingTop: 3, 
-    width : '70%',
+    width : '60%',
     marginTop : 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -345,11 +352,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.6,
     shadowRadius: 8,
-    elevation: 5,
+    elevation: 6,
     
   },
   
   SignUpText :{
+    marginTop : 5,
     fontSize : 20,
     alignSelf: "center",
     fontWeight : 'bold',

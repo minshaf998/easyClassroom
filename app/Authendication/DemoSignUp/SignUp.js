@@ -2,64 +2,56 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Alert, ScrollView, Keyboard ,StyleSheet, SafeAreaView} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { registration } from '../../API/firebaseMethods/firebaseMethod';
+import { DemoRegistration } from '../../../API/firebaseMethods/DemoRegistration';
 import * as firebase from "firebase";
 import "firebase/firestore";
 import RNPickerSelect from "react-native-picker-select";
+import DatePicker from 'react-native-datepicker';
 
-export default function StudentSignUp({ navigation }) {
-
-  
+export default function SignUp({ navigation }) {
+  const [id, setId] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
-  const [DOB ,setDOB] = useState('');
+  //const [DOB ,setDOB] = useState('');
   const [district ,setDistrict] = useState('');
-  const [course , setCourse] = useState('');
-  const [registrationNumber , setRegistrationNumber] = useState('');
-  const [indexNumber , setIndexNumber] = useState('');
-  const [role, setRole] = useState('');
   const [faculty, setFaculty] = useState('');
-  //const [department, setDeparment] = useState('');
+  const [department, setDepartment] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const emptyState = () => {
+    setId('');
     setFirstName('');
     setLastName('');
     setGender('');
-    setDOB('');
+    //setDOB('');
     setDistrict('');
-    setCourse('');
-    setRegistrationNumber('');
-    setIndexNumber('');
-    //setRole('');
+    setRole('');
     setFaculty('');
-   // setDeparment('');
+    setDepartment('');
     setEmail('');
     setPassword('');
     setConfirmPassword('');
   };
 
   const handlePress = () => {
-   
-    if (!firstName) {
-      Alert.alert('First name is required');
+    
+    if (!id) {
+      Alert.alert('ID is required');
+    } else if (!firstName) {
+      Alert.alert('Last name field is required.');
     } else if (!lastName) {
-      Alert.alert('Last name field is required.');
-    }else if (!registrationNumber) {
-      Alert.alert('Last name field is required.');
-    }else if (!indexNumber) {
       Alert.alert('Last name field is required.');
     }else if (!gender) {
       Alert.alert('gender field is required.');
     }else if (!district) {
       Alert.alert('District field is required.');
-    }else if (!course) {
-      Alert.alert('Course field is required.');
     }else if (!faculty) {
       Alert.alert('Faculty field is required.');
+    }else if (!department) {
+      Alert.alert('department field is required.');
     }else if (!email) {
       Alert.alert('email field is required.');
     } else if (!password) {
@@ -70,17 +62,17 @@ export default function StudentSignUp({ navigation }) {
     } else if (password !== confirmPassword) {
       Alert.alert('Password does not match!');
     } else {
-      registration(
+      DemoRegistration(
         email,
         password,
         lastName,
         firstName,
-        registrationNumber,
-        indexNumber,
         gender,
         district,
-        course,
         faculty,
+        department,
+        id,
+        
         
       );
       navigation.navigate('Loading');
@@ -95,9 +87,24 @@ export default function StudentSignUp({ navigation }) {
       <Text style={styles.text}>SignUp </Text>
       </View>
       <ScrollView style={styles.scrollView}>
+    
+     
+     
    
      <View >
-    <View style={styles.cardCont}>
+
+     <View style={styles.cardCont}>
+        <Text style={styles.cardtext}>ID</Text>
+        <View style={styles.action}>
+          <TextInput  
+           style={styles.textinput}
+           placeholder="ID"
+           value={id}
+           onChangeText={(id) => setId(id)} />
+        </View>
+      </View>
+
+       <View style={styles.cardCont}>
         <Text style={styles.cardtext}>First Name</Text>
         <View style={styles.action}>
           <TextInput  
@@ -116,27 +123,6 @@ export default function StudentSignUp({ navigation }) {
           placeholder="Last name"
           value={lastName}
           onChangeText={(name) => setLastName(name)} />
-        </View>
-      </View>
-      <View style={styles.cardCont}>
-        <Text style={styles.cardtext}>registration Number</Text>
-        <View style={styles.action}>
-          <TextInput  
-          style={styles.textinput}
-          placeholder="Registration Number"
-          value={registrationNumber}
-          onChangeText={(registrationNumber) => setRegistrationNumber(registrationNumber)} />
-        </View>
-      </View>
-
-      <View style={styles.cardCont}>
-        <Text style={styles.cardtext}>Index Number</Text>
-        <View style={styles.action}>
-          <TextInput  
-          style={styles.textinput}
-          placeholder="index number"
-          value={indexNumber}
-          onChangeText={(indexNumber) => setIndexNumber(indexNumber)} />
         </View>
       </View>
 
@@ -161,8 +147,8 @@ export default function StudentSignUp({ navigation }) {
         ]} />
         </View>
       </View>
-
-      <View style={styles.cardCont}>
+    
+     <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Faculty</Text>
         <View style={styles.action}>
           <TextInput  
@@ -173,28 +159,18 @@ export default function StudentSignUp({ navigation }) {
            />
         </View>
       </View>
-      
-    <View style={styles.cardCont}>
-        <Text style={styles.cardtext}>
-          
-        <Text>
-                {course ?
-                  ` ${course}` :
-                    "Select course"
-                }
-            </Text>
-        </Text>
+
+      <View style={styles.cardCont}>
+        <Text style={styles.cardtext}>Department</Text>
         <View style={styles.action}>
-        <RNPickerSelect
-          onValueChange={(course)  => setCourse(course)}
-         items={[
-          { label: "Computer Science", value: "Computer Science" },
-          { label: "Physical Science", value: "Physical SCience" },
-          { label: "Bio SCience", value: "Bio SCience" },
-          
-        ]} />
+          <TextInput  
+          style={styles.textinput}
+          placeholder="Department "
+          value={department}
+          onChangeText={(department) => setDepartment(department)} />
         </View>
       </View>
+      
       <View style={styles.cardCont}>
         <Text style={styles.cardtext}>District</Text>
         <View style={styles.action}>
@@ -206,6 +182,7 @@ export default function StudentSignUp({ navigation }) {
            />
         </View>
       </View>
+      
 
       <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Email</Text>
@@ -231,9 +208,7 @@ export default function StudentSignUp({ navigation }) {
          secureTextEntry={true} />
         </View>
       </View>
-         
 
-         
       <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Retype Password</Text>
         <View style={styles.action}>
@@ -279,9 +254,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     marginTop:20,
-    marginBottom: 10,
-    marginLeft : 25,
-    marginRight :25,
+    marginBottom: 15,
     borderRadius:15,
     backgroundColor: '#ffffff',
     marginHorizontal: 1,
@@ -292,19 +265,20 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.9,
     shadowRadius: 10,
-    elevation: 0.8,
+    elevation: 0.2,
 
   },
 
   cardCont: {
     marginTop: 10,
-    marginLeft: 20,
+    alignSelf :'center',
     padding : 5,
     width:'80%',
   },
   text :{
+    alignSelf : 'center',
     marginBottom : 20,
-    fontSize : 25,
+    fontSize : 30,
     fontWeight: 'bold',
   },
 
@@ -315,11 +289,21 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   action: {
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
+    marginTop: 5,
+    
+    borderRadius : 10,
     paddingBottom: 5,
     marginBottom: 5,
+    width: '100%',
+    backgroundColor :'white',
+    shadowColor: "#000",
+    shadowOffset: {
+	  width: 0,
+	  height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 8,
   },
 
   textinput: {
@@ -333,10 +317,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 50,
     borderRadius: 9,
-    marginTop : 80,
+    marginTop : 90,
     marginBottom :20,
     paddingTop: 3, 
-    width : '70%',
+    width : '60%',
     marginTop : 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -345,11 +329,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.6,
     shadowRadius: 8,
-    elevation: 5,
+    elevation: 6,
     
   },
   
   SignUpText :{
+    marginTop : 5,
     fontSize : 20,
     alignSelf: "center",
     fontWeight : 'bold',

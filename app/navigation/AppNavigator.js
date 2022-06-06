@@ -1,9 +1,11 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { RefreshControl } from 'react-native';
 
-import LectrerDashboardScreen from "../screens/users/Lecture/LecturerDashboardScreen";
-import DemoDashboardScreen from "../screens/users/Demo/DemoDashboardScreen";
+
+import LectrerDashboardScreen from "../screens/users/Lecture/LecturerHome";
+import DemoDashboardScreen from "../screens/users/Demo/DemoHome";
 import AdminDashboard from "../screens/users/Admin/AdminDashboardScreen";
 
 import { Student } from "./StudentNav/Student";
