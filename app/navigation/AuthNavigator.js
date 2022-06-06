@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 import apiKeys from '../../config/keys';
 import Dashboard from "../screens/users/Dashboard";
 import WelcomeScreen from "../screens/WelcomeScreen";
-import SignUp from "../Authendication/SignUp";
+// import SignUp from "../Authendication/SignUp";
 import SignIn from "../Authendication/SignIn";
 import LoadingScreen from "../Authendication/LoadingScreen";
 import AddPostScreen from "../screens/Post/AddPostScreen";
@@ -39,16 +39,16 @@ export default function App() {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
+        <Stack.Screen name={'UpdateProfile'} component={UpdateProfile} options={{ headerShown: false }} />
         <Stack.Screen name={'Loading'} component={LoadingScreen} options={{ headerShown: false }} />
-        <Stack.Screen name={'Home'} component={WelcomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name={'Dashboard'} component={Dashboard} options={{ headerShown: false }} />
         <Stack.Screen name={'AdminSignUp'} component={AdminSignUp} options={{ headerShown: false }} />
+        <Stack.Screen name={'Home'} component={WelcomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name={'LecturerSignUp'} component={LecturerSignUp} options={{ headerShown: false }} />
         <Stack.Screen name={'DemoSignUp'} component={DemoSignUp} options={{ headerShown: false }} />
         <Stack.Screen name={'StudentSignUp'} component={StudentSignUp} options={{ headerShown: false }} />
         <Stack.Screen name={'Sign In'} component={SignIn} options={{ headerShown: false }} />
-        <Stack.Screen name={'Sign Up'} component={SignUp} options={{ headerShown: false }} />
-        <Stack.Screen name={'UpdateProfile'} component={UpdateProfile} options={{ headerShown: false }} />
+        {/* <Stack.Screen name={'Sign Up'} component={SignUp} options={{ headerShown: false }} /> */}
         <Stack.Screen name={'Noticeboard'} component={Noticboard} options={{ headerShown: false }} />
         <Stack.Screen name={'VerifyRole'} component={VerifyRole} options={{ headerShown: false }} />
         <Stack.Screen name={'Pin'} component={Pin} options={{ headerShown: false }} />
