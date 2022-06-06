@@ -3,10 +3,14 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import { StatusBar, View, StyleSheet } from "react-native";
 
 export default function App() {
-  const isLogedIn = true;
+
   return (
     <View style={styles.container}>
-      <AuthNavigator />
+
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+
     </View>
   );
 }

@@ -9,7 +9,6 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import SignUp from "../Authendication/SignUp";
 import SignIn from "../Authendication/SignIn";
 import LoadingScreen from "../Authendication/LoadingScreen";
-import NavigateUser from "../Authendication/NavigateUser";
 import AddPostScreen from "../screens/Post/AddPostScreen";
 import UpdateProfile from "../screens/Profile/UpdateProfile";
 import Noticboard from '../screens/Noticeboard/Noticeboard';
@@ -19,8 +18,8 @@ import LecturerSignUp from "../Authendication/LectuerSignUp/SignUp";
 import StudentSignUp from "../Authendication/StudentSignUp/SignUp";
 import DemoSignUp from "../Authendication/DemoSignUp/SignUp";
 import Pin from "../Authendication/Verify/Pin";
-import Profile from "../screens/Profile/Profile";
-import LoadingPage from "../screens/LoadingScreen/LoadingPage";
+
+
 import UniversityNoticeboardScreen from "../screens/Noticeboard/university/UniversityNoticeboard";
 import DepartmentNoticeboardScreen from "../screens/Noticeboard/department/DepartmentNoticeboard";
 import FacultyNoticeboardScreen from "../screens/Noticeboard/faculty/FacultyNoticeboard";
@@ -48,12 +47,10 @@ export default function App() {
         <Stack.Screen name={'StudentSignUp'} component={StudentSignUp} options={{ headerShown: false }} />
         <Stack.Screen name={'Sign In'} component={SignIn} options={{ headerShown: false }} />
         <Stack.Screen name={'Sign Up'} component={SignUp} options={{ headerShown: false }} />
-        <Stack.Screen name={'NavigateUser'} component={NavigateUser} options={{ headerShown: false }} />
         <Stack.Screen name={'UpdateProfile'} component={UpdateProfile} options={{ headerShown: false }} />
         <Stack.Screen name={'Noticeboard'} component={Noticboard} options={{ headerShown: false }} />
         <Stack.Screen name={'VerifyRole'} component={VerifyRole} options={{ headerShown: false }} />
         <Stack.Screen name={'Pin'} component={Pin} options={{ headerShown: false }} />
-        <Stack.Screen name={'LoadingPage'} component={LoadingPage} options={{ headerShown: false }} />
         <Stack.Screen name={'AddPostScreen'} component={AddPostScreen} options={{ headerShown: false }} />
         <Stack.Screen name={'UniversityNoticeboard'} component={UniversityNoticeboardScreen} options={{ headerShown: false }} />
         <Stack.Screen name={'FacultyNoticeboard'} component={FacultyNoticeboardScreen} options={{ headerShown: false }} />
