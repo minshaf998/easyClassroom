@@ -1,4 +1,4 @@
-import React  from 'react';
+import React , { useEffect, useState } from 'react';
 import {
     View,
     Button,
@@ -12,15 +12,35 @@ import * as firebase from 'firebase';
 
 
 
+
 export default function ProfileImage(){
 
-    const pickImageHandler = async () => {
-        let result = await ImagePicker.launchCameraAsync();
+    const currentUser = firebase.auth().currentUser;
 
+    const currentUserUID = firebase.auth().currentUser.uid;
+
+   // const [photo,setPoto] = useState(null);
+
+    const IMAGENAME = require('../assets/profile-placeholder.png');
+
+    const [photoURL, setPhotoURL] = useState(IMAGENAME);
+
+  
+
+    const pickImageHandler = async () => {
+        let result = await  ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4,3],
+            quality: 1,
+          });
+       
         if(!result.cancelled){
-            uploadImage(result.uri, "test-image" )
+            const URL = uploadImage(result.uri, currentUserUID)
             .then(() => {
-                Alert.alert("Success");
+                console.log(URL);
+                setPhotoURL(URL);
+                Alert.alert("Uploaded");
 
             })
             .catch((error) =>{
@@ -34,14 +54,42 @@ export default function ProfileImage(){
         const response = await fetch(uri);
         const blob = await response.blob();
 
-        var ref = firebase.storage().ref().child("images/" + imageName);
+        var ref = firebase.storage().ref().child(imageName);
 
-        return ref.put(blob);
+        
+
+        const snapshot = await ref.put(blob);
+        blob.close();
+
+        return await snapshot.ref.getDownloadURL();
+
+    
+
+        
+        
+
+       
+
+        
 
     }
 
+    useEffect(() => {
+        if(currentUser?.photoURL){
+            setPhotoURL(currentUser.setPhotoURL)
+        }
+        
+;    },[currentUser])
+
+
     return(
         <View style = {StyleSheet.container}>
+             <Image
+                style = { styles.avatar}
+                source={photoURL}
+                >
+            </Image>
+           
             <Button title = "choose image" onPress ={pickImageHandler}/>
 
         </View>
@@ -49,12 +97,21 @@ export default function ProfileImage(){
 }
 
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container :{
        
         alignItems :'center'
     },
-     
-     
+    avatar : {
+        marginTop: 20,
+        height : 100,
+        width :100,
+        borderRadius : 90,
+        borderWidth : 5,
+        borderColor : 'white',
+        alignSelf :'center',
+
+  
+      }
 
 })
