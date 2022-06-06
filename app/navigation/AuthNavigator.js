@@ -35,6 +35,7 @@ export default function App() {
     console.log('Connected with Firebase')
     firebase.initializeApp(apiKeys.firebaseConfig);
   }
+
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
