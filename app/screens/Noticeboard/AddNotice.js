@@ -97,6 +97,7 @@ export default function AddNoticeScreen({navigation,route}){
             value={title}
             multiline={true}
             numberOfLines={2}
+            keyboardDismissMode='on-drag'
             textAlignVertical="top" 
             onChangeText={(title) => setTitle(title)} />
         </View>
@@ -110,7 +111,9 @@ export default function AddNoticeScreen({navigation,route}){
             placeholder="Type here"
             value={notice}
             multiline={true}
-            numberOfLines={10}
+            numberOfLines={10}  
+            
+            keyboardDismissMode='on-drag'
            
             textAlignVertical="top" 
             onChangeText={(notice) => setNotice(notice)} />
