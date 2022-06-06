@@ -1,16 +1,25 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet,SafeAreaView, Alert ,Image} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, TextInput, StyleSheet,SafeAreaView, Alert ,Image,ActivityIndicator, KeyboardAvoidingView,} from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { signIn } from '../../API/firebaseMethods/firebaseMethod';
+import Modal from "react-native-modal";
+
+
+
+
 
 export default function SignIn({ navigation }) {
+
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handlePress = () => {
     if (!email) {
-      Alert.alert('Email field is required.');
+      Alert.alert('email field is required.');
+     
     }
 
     if (!password) {
@@ -20,13 +29,28 @@ export default function SignIn({ navigation }) {
     signIn(email, password);
     setEmail('');
     setPassword('');
+
+    return(
+      <View style={styles.Loadingcontainer}>
+     
+      <Image
+        style={styles.logo}
+        source={require("../assets/logo.png")}
+      ></Image>
+      <Text style={{color: 'black', fontSize: 40}}>Easy Classroom</Text>
+      <ActivityIndicator color="blue" size="large" />
+
+      </View>
+    )
   };
 
   return (
     
   
-    <SafeAreaView style={styles.container}>
-
+    
+    
+<View style={styles.container}>
+ 
       <View style={styles.logoContainer}>
         <Image
         style={styles.logo}
@@ -35,6 +59,10 @@ export default function SignIn({ navigation }) {
       <Text style={styles.text}>TIME TO LEARN</Text>
       </View>
 
+<SafeAreaView >
+ <ScrollView style={{height:200}}>
+
+     
        <View style={styles.cardCont}>
         <Text style={styles.cardtext}>Email</Text>
         <View style={styles.action}>
@@ -57,16 +85,22 @@ export default function SignIn({ navigation }) {
           />
         </View>
       </View>
+    
+      
+      </ScrollView>
+ </SafeAreaView>
 
       
       <TouchableOpacity   style={styles.buttonLogin} onPress={handlePress}>
         <Text style={styles.buttontext}>SignIn</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity  onPress={() => navigation.navigate('Sign Up')}>
+      <TouchableOpacity  onPress={() => navigation.navigate('VerifyRole')}>
           <Text style={styles.inlineText}>Don't have an account?</Text>
           </TouchableOpacity>
-    </SafeAreaView>
+
+   
+  </View>
     
   );
     
@@ -78,24 +112,28 @@ const styles = StyleSheet.create({
     flex: 2,
     padding: 10,
     backgroundColor: "#ffffff",
-    
+  
   },
 
   cardCont: {
-    marginTop: 10,
-    marginLeft: 20,
+    marginTop: -10,
+    marginLeft: 40,
     padding : 5,
     width:'80%',
+    
   },
   text: {
+    marginTop :-20,
     fontWeight: "bold",
     fontSize: 20,
+   
   },
 
   cardtext: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 5,
+    
   },
   inlineText:{
     color:'blue',
@@ -115,16 +153,29 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   action: {
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
+    marginTop: 5,
+    
+    borderRadius : 10,
     paddingBottom: 5,
-    marginBottom: 5,
+    marginBottom: 20,
+
+    backgroundColor :'white',
+    shadowColor: "#000",
+    shadowOffset: {
+	  width: 0,
+	  height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 5,
+    
   },
 
   textinput: {
     color: "black",
+    padding:7,
     fontSize: 20,
+    paddingLeft :8
   },
 
   buttonLogin: {
@@ -132,16 +183,39 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 50,
     borderRadius: 9,
-    marginTop : 50,
+    marginTop : 40,
     paddingTop: 3, 
-    width : '70%',
+    width : '60%',
     alignItems : 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+	  width: 0,
+	  height: 2,
+    },
+    shadowOpacity: 5,
+    shadowRadius: 8,
+    elevation: 7,
+    
   },
 
   buttontext: {
     fontSize: 22,
     fontWeight: "500",
     alignSelf: "center",
-    paddingTop: 7,
+    paddingTop: 2,
+  },
+
+  Loadingcontainer: {
+    flex: 1,
+    
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:'#ffffff'
+  },
+
+  logo: {
+  
+    width: 200,
+    height: 200,
   },
 });
