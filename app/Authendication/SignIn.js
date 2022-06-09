@@ -48,8 +48,9 @@ export default function SignIn({ navigation }) {
     
   
     
-      
+    
 <View style={styles.container}>
+ 
       <View style={styles.logoContainer}>
         <Image
         style={styles.logo}
@@ -97,6 +98,8 @@ export default function SignIn({ navigation }) {
       <TouchableOpacity  onPress={() => navigation.navigate('VerifyRole')}>
           <Text style={styles.inlineText}>Don't have an account?</Text>
           </TouchableOpacity>
+
+   
   </View>
     
   );
