@@ -1,39 +1,73 @@
-import React from "react";
 import {
-  Text,
+  ImageBackground,
   StyleSheet,
   View,
+  Text,
+  TouchableOpacity,
   SafeAreaView,
   Image,
-  Button,
-  TouchableOpacity,
+  BackHandler,
 } from "react-native";
+import React from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import { StatusBar } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+export default function WelcomeScreen({ navigation }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp();
+        // Return true to stop default back navigaton
+        // Return false to keep default back navigaton
+        return true;
+      };
 
-function WelcomeScreen({ navigation }) {
+      // Add Event Listener for hardwareBackPress
+      BackHandler.addEventListener("hardwareBackPress", onBackPress);
+
+      return () => {
+        // Once the Screen gets blur Remove Event Listener
+        BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+      };
+    }, [])
+  );
+  React.useEffect(() => {
+    StatusBar.setBackgroundColor("white");
+    StatusBar.setTranslucent(true);
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
-          source={require("./../assets/logo.png")}
+          source={require("./../assets/ec.png")}
         ></Image>
-        <Text style={styles.text}>TIME TO LEARN</Text>
+        <Text
+          style={{ alignSelf: "center", color: "#cdaffa", fontWeight: "bold" }}
+        >
+          Easy Classroom
+        </Text>
+        <Text style={styles.text}> TIME TO LEARN </Text>
       </View>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
           title="Login"
-          onPress={() => navigation.navigate("Person")}
+          onPress={() => navigation.navigate("Sign In")}
         >
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>SignIn</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: "red", marginTop: 5 }]}
+          style={[styles.button, { backgroundColor: "#b5b4b1" }]}
           title="create class"
-          onPress={() => navigation.navigate("createClass")}
+          onPress={() => navigation.navigate("VerifyRole")}
         >
-          <Text style={styles.buttonText}>Create Class Room</Text>
+          <Text style={styles.buttonText}>SignUp </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -43,50 +77,54 @@ function WelcomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "lightgreen",
-    justifyContent: "flex-end",
+    backgroundColor: "#ffffff",
+    justifyContent: "center",
     alignItems: "center",
   },
 
-  newButton: {
-    width: "100%",
-  },
-
   button: {
-    backgroundColor: "blue",
-    height: 50,
-    borderRadius: 9,
-    paddingTop: 5,
+    backgroundColor: "#cdaffa",
+    marginBottom: hp("2%"),
+    justifyContent: "center",
+    alignItems: "center",
+    height: hp("8%"),
+    borderRadius: 12,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 5,
   },
 
   logo: {
-    width: 150,
-    height: 150,
+    width: wp("60%"),
+    height: hp("20%"),
   },
 
   logoContainer: {
-    position: "absolute",
-    top: 100,
+    marginTop: hp("20%"),
     alignItems: "center",
   },
 
   buttonText: {
-    color: "white",
-    fontSize: 25,
-    alignSelf: "center",
+    color: "black",
+    fontSize: hp("3%"),
+    fontWeight: "bold",
   },
 
   text: {
     fontWeight: "bold",
-    position: "absolute",
-    top: 130,
-    fontSize: 20,
+    color: "black",
+    marginTop: hp("1%"),
+    fontSize: hp("2.5%"),
+    fontWeight: "bold",
   },
 
   buttonContainer: {
-    width: "90%",
-    marginBottom: 30,
+    marginTop: hp("30%"),
+    width: wp("70%"),
   },
 });
-
-export default WelcomeScreen;
